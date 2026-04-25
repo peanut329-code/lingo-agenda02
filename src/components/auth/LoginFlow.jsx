@@ -34,7 +34,7 @@ export default function LoginFlow({ onDone }) {
   const handleUsername = () => {
     const name = username.trim();
     if (!name) { setError('請輸入使用者名稱'); return; }
-    if (name.length < 2) { setError('名稱至少 2 個字'); return; }
+    if (name.length < 1) { setError('請輸入使用者名稱'); return; }
     localStorage.setItem(USER_KEY, name);
     setError('');
     setStep(3);

@@ -13,6 +13,15 @@ const SOURCE_COLORS = {
 
 const SOURCES = ['全部', ...Object.keys(SOURCE_COLORS)];
 
+function speak(text, rate = 0.85) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'en-US';
+  utt.rate = rate;
+  window.speechSynthesis.speak(utt);
+}
+
 export default function VocabBook() {
   const [filter, setFilter] = useState('全部');
   const [search, setSearch] = useState('');
@@ -83,7 +92,10 @@ export default function VocabBook() {
             <div className="quiz-bar-fill" style={{ width: `${((quiz.index) / quiz.words.length) * 100}%` }} />
           </div>
         </div>
-        <div className="quiz-word">{current.word}</div>
+        <div className="quiz-word" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+          {current.word}
+          <button className="speak-btn" onClick={() => speak(current.word)} title="發音">🔊</button>
+        </div>
         {!quizAnswered ? (
           <button className="btn btn-primary" style={{ marginTop: 24, fontSize: 18 }} onClick={() => setQuizAnswered(true)}>
             顯示答案
@@ -147,6 +159,11 @@ export default function VocabBook() {
               <div className="vocab-card vocab-front">
                 <span className={`badge badge-${SOURCE_COLORS[word.source] || 'blue'}`}>{word.source}</span>
                 <div className="vocab-word">{word.word}</div>
+                <button
+                  className="speak-btn"
+                  onClick={e => { e.stopPropagation(); speak(word.word); }}
+                  title="發音"
+                >🔊</button>
                 <div className="vocab-meaning">{word.meaning}</div>
                 <div className="vocab-flip-hint">點擊看詳細 🔄</div>
                 <div className="vocab-deco">🐙</div>
@@ -159,7 +176,14 @@ export default function VocabBook() {
                 </div>
                 <div className="vocab-section">
                   <span className="vocab-label">💬 例句</span>
-                  <p className="vocab-example">{word.example}</p>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+                    <p className="vocab-example" style={{ flex: 1 }}>{word.example}</p>
+                    <button
+                      className="speak-btn speak-btn-sm"
+                      onClick={e => { e.stopPropagation(); speak(word.example, 0.8); }}
+                      title="例句發音"
+                    >🔊</button>
+                  </div>
                   <p className="vocab-translation">{word.translation}</p>
                 </div>
               </div>
