@@ -22,7 +22,7 @@ export default function LoginFlow({ onDone }) {
   }
 
   const handleSitePassword = () => {
-    if (sitePass === import.meta.env.VITE_SITE_PASSWORD) {
+    if (sitePass.trim() === (import.meta.env.VITE_SITE_PASSWORD || '').trim()) {
       localStorage.setItem(SITE_KEY, 'true');
       setError('');
       setStep(2);
