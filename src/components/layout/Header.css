@@ -1,0 +1,122 @@
+.app-header {
+  background: linear-gradient(135deg, rgba(247,251,255,0.97) 0%, rgba(223,241,251,0.97) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid rgba(126,200,227,0.3);
+  box-shadow: 0 4px 20px rgba(126,200,227,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px 10px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-emoji {
+  font-size: 32px;
+  display: inline-block;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--deep-blue-dark);
+  letter-spacing: 0.5px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user {
+  font-size: 16px;
+  color: var(--ocean-dark);
+  font-weight: 500;
+}
+
+.header-tabs {
+  display: flex;
+  padding: 0 16px;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--deep-blue);
+  border-radius: 14px 14px 0 0;
+  transition: all 0.2s;
+  white-space: nowrap;
+  position: relative;
+  opacity: 0.7;
+}
+
+.tab-btn:hover {
+  background: rgba(126,200,227,0.15);
+  opacity: 1;
+}
+
+.tab-btn.active {
+  background: rgba(126,200,227,0.2);
+  color: var(--deep-blue-dark);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ocean-blue), var(--ocean-dark));
+  border-radius: 3px 3px 0 0;
+}
+
+.tab-emoji {
+  font-size: 20px;
+}
+
+.tab-label {
+  font-size: 16px;
+}
+
+.header-wave {
+  width: 100%;
+  height: 16px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.header-wave svg {
+  width: 100%;
+  height: 16px;
+}
+
+@media (max-width: 600px) {
+  .tab-label { display: none; }
+  .tab-btn { padding: 10px 14px; }
+  .logo-text { font-size: 18px; }
+  .header-user { display: none; }
+}

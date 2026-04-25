@@ -1,0 +1,118 @@
+.login-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #c8eaf8 0%, #dff1fb 40%, #e8f8ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card {
+  background: rgba(247,251,255,0.95);
+  border-radius: 28px;
+  box-shadow: 0 12px 48px rgba(126,200,227,0.35);
+  border: 2px solid rgba(126,200,227,0.4);
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.login-logo {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.login-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--deep-blue-dark);
+  margin-bottom: 6px;
+}
+
+.login-sub {
+  font-size: 18px;
+  color: var(--ocean-dark);
+  margin-bottom: 28px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.login-error {
+  color: #c0392b;
+  font-size: 16px;
+  background: rgba(255,179,167,0.2);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,179,167,0.5);
+}
+
+.username-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.username-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.username-input-wrap input {
+  padding-left: 46px;
+}
+
+.login-hint {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--ocean-dark);
+  text-align: center;
+  opacity: 0.75;
+}
+
+.login-deco {
+  margin-top: 28px;
+  font-size: 22px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+}
+
+/* 泡泡 */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -20px;
+  left: var(--left);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: rgba(126,200,227,0.2);
+  border: 1.5px solid rgba(126,200,227,0.35);
+  animation: bubble-rise 6s ease-in infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes bubble-rise {
+  0% { bottom: -40px; opacity: 0; transform: scale(0.8); }
+  10% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { bottom: 110%; opacity: 0; transform: scale(1.1) translateX(20px); }
+}

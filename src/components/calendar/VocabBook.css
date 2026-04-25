@@ -1,0 +1,198 @@
+.vocab-wrap { animation: fadeInUp 0.4s ease; }
+
+.vocab-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.vocab-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 2px solid rgba(126,200,227,0.35);
+  background: rgba(247,251,255,0.9);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--deep-blue);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-chip:hover { background: rgba(126,200,227,0.15); }
+.filter-chip.active {
+  background: linear-gradient(135deg, var(--ocean-blue), var(--ocean-dark));
+  color: white;
+  border-color: transparent;
+}
+
+.filter-count {
+  background: rgba(255,255,255,0.3);
+  border-radius: 50px;
+  padding: 1px 7px;
+  font-size: 13px;
+}
+.filter-chip.active .filter-count { background: rgba(255,255,255,0.35); }
+
+/* Card flip grid */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.vocab-card-wrap {
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.vocab-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vocab-card-wrap.flipped .vocab-card-inner {
+  transform: rotateY(180deg);
+}
+
+.vocab-card {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1.5px solid rgba(126,200,227,0.3);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vocab-front {
+  background: var(--cloud-white);
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.vocab-back {
+  background: linear-gradient(135deg, rgba(168,230,207,0.15), rgba(247,251,255,1));
+  transform: rotateY(180deg);
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.vocab-word {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--deep-blue-dark);
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.vocab-meaning {
+  font-size: 18px;
+  color: var(--ocean-dark);
+  font-weight: 500;
+}
+
+.vocab-flip-hint {
+  font-size: 13px;
+  color: rgba(126,200,227,0.8);
+  margin-top: auto;
+}
+
+.vocab-deco {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 24px;
+  opacity: 0.3;
+}
+
+.vocab-section { display: flex; flex-direction: column; gap: 2px; }
+
+.vocab-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ocean-dark);
+}
+
+.vocab-coll-en {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--deep-blue-dark);
+}
+
+.vocab-coll-zh {
+  font-size: 15px;
+  color: var(--deep-blue);
+}
+
+.vocab-example {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--deep-blue);
+  line-height: 1.5;
+}
+
+.vocab-translation {
+  font-size: 14px;
+  color: var(--ocean-dark);
+  line-height: 1.5;
+}
+
+/* Quiz */
+.vocab-quiz, .vocab-quiz-done {
+  padding: 36px;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.quiz-progress {
+  margin-bottom: 24px;
+}
+
+.quiz-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(126,200,227,0.2);
+  border-radius: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.quiz-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ocean-blue), var(--mint-green));
+  border-radius: 10px;
+  transition: width 0.4s;
+}
+
+.quiz-word {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--deep-blue-dark);
+  margin-top: 16px;
+}
+
+.quiz-answer {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ocean-dark);
+}

@@ -1,0 +1,27 @@
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.sub-tab-btn {
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 2px solid rgba(126,200,227,0.4);
+  background: rgba(247,251,255,0.8);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--deep-blue);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sub-tab-btn:hover { background: rgba(126,200,227,0.2); }
+
+.sub-tab-btn.active {
+  background: linear-gradient(135deg, var(--ocean-blue), var(--ocean-dark));
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(126,200,227,0.4);
+}

@@ -1,0 +1,97 @@
+.pomodoro-bubble {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffb3a7, #ff8a7a);
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  box-shadow: 0 6px 24px rgba(255,138,122,0.45);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+.pomodoro-bubble:hover { transform: scale(1.1); }
+
+.tomato-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--ocean-blue);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.pomodoro-panel {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 260px;
+  background: rgba(247,251,255,0.97);
+  border-radius: 24px;
+  box-shadow: 0 12px 48px rgba(44,95,122,0.2);
+  border: 1.5px solid rgba(126,200,227,0.35);
+  z-index: 150;
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease;
+}
+
+.pomodoro-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1.5px solid rgba(126,200,227,0.2);
+}
+
+.pomodoro-presets {
+  display: flex;
+  gap: 6px;
+  padding: 12px 12px 8px;
+}
+
+.preset-btn {
+  flex: 1;
+  padding: 6px 4px;
+  border-radius: 10px;
+  border: 2px solid rgba(126,200,227,0.35);
+  background: rgba(247,251,255,0.9);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.preset-btn:hover { border-color: var(--ocean-blue); }
+
+.pomodoro-timer-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.pomodoro-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 0 16px 10px;
+}
+
+.pomodoro-settings {
+  padding: 12px 16px 16px;
+  border-top: 1.5px solid rgba(126,200,227,0.2);
+}
