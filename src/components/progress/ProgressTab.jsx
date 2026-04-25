@@ -24,7 +24,12 @@ export default function ProgressTab({ userId }) {
     });
   }, [userId]);
 
-  const todayTasks = tasks.filter(t => t.dueDate === todayStr && t.status !== '已完成');
+  const todayTasks = tasks.filter(t =>
+    t.status !== '已完成' && (
+      t.dueDate === todayStr ||
+      (t.status === '進行中' && !t.dueDate)
+    )
+  );
   const todayDone = tasks.filter(t => t.dueDate === todayStr && t.status === '已完成');
   const tomorrowTasks = tasks.filter(t => t.dueDate === tomorrowStr && t.status !== '已完成');
 

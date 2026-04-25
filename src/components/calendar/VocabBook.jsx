@@ -14,12 +14,18 @@ const SOURCE_COLORS = {
 const SOURCES = ['全部', ...Object.keys(SOURCE_COLORS)];
 
 function speak(text, rate = 0.85) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang = 'en-US';
-  utt.rate = rate;
-  window.speechSynthesis.speak(utt);
+  const synth = window.speechSynthesis;
+  if (!synth) return;
+  synth.cancel();
+  // Small delay lets cancel() fully settle on mobile browsers
+  setTimeout(() => {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'en-US';
+    utt.rate = rate;
+    utt.pitch = 1;
+    utt.volume = 1;
+    synth.speak(utt);
+  }, 120);
 }
 
 export default function VocabBook() {
