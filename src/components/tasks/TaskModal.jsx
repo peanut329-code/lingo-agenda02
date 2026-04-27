@@ -32,11 +32,13 @@ export default function TaskModal({ task, onSave, onClose }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
             <label style={{ fontSize: 16, fontWeight: 700, display: 'block', marginBottom: 6 }}>任務標題 *</label>
-            <input
-              placeholder="輸入任務標題"
+            <textarea
+              placeholder="輸入任務標題（可換行）"
               value={form.title}
               onChange={e => set('title', e.target.value)}
               autoFocus
+              rows={2}
+              style={{ minHeight: 'unset', resize: 'vertical' }}
             />
           </div>
 
