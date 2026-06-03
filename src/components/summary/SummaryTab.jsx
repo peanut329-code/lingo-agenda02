@@ -18,7 +18,7 @@ const MOODS = [
 
 const MOOD_COLORS = ['#7ec8e3','#a8e6cf','#ffb3a7','#fff3b0','#c9b8e8','#f4956a','#85c1e9','#d7bde2'];
 
-function getTodayStr() { return new Date().toISOString().split('T')[0]; }
+function getTodayStr() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function getMonthStr(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; }
 function getQuarter(d = new Date()) { return Math.floor(d.getMonth() / 3); }
 
@@ -46,13 +46,18 @@ export default function SummaryTab({ userId }) {
 
   const addEntry = async () => {
     if (!newMood) { alert('請選擇心情'); return; }
-    await addDoc(collection(db, 'mood_entries'), {
-      userId, date: todayStr, mood: newMood, note: newNote.trim(),
-      createdAt: new Date().toISOString(), period: todayEntries.length === 0 ? '早' : '晚'
-    });
-    setNewMood('');
-    setNewNote('');
-    setShowForm(false);
+    try {
+      await addDoc(collection(db, 'mood_entries'), {
+        userId, date: todayStr, mood: newMood, note: newNote.trim(),
+        createdAt: new Date().toISOString(), period: todayEntries.length === 0 ? '早' : '晚'
+      });
+      setNewMood('');
+      setNewNote('');
+      setShowForm(false);
+    } catch (err) {
+      console.error('新增失敗', err);
+      alert(`新增失敗：${err.message}`);
+    }
   };
 
   const deleteEntry = async (id) => {
